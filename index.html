@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Дегустация</title>
+    <title>Дегустация (ТЕСТ)</title>
     <style>
         body { font-family: Arial, sans-serif; max-width: 700px; margin: 20px auto; padding: 0 15px; background: #f9f9f9; }
         h1 { text-align: center; color: #333; }
@@ -21,7 +21,7 @@
     </style>
 </head>
 <body>
-    <h1>Оценка товара</h1>
+    <h1>Оценка товара (ТЕСТОВАЯ ВЕРСИЯ — 1 товар, 1 свойство)</h1>
     <form id="evaluationForm">
         <div class="form-group">
             <label for="participant">Участник (имя или номер):</label>
@@ -32,6 +32,7 @@
             <select id="product" required>
                 <option value="">Выберите...</option>
                 <option value="Товар 1">Товар 1</option>
+                <!--
                 <option value="Товар 2">Товар 2</option>
                 <option value="Товар 3">Товар 3</option>
                 <option value="Товар 4">Товар 4</option>
@@ -41,11 +42,14 @@
                 <option value="Товар 8">Товар 8</option>
                 <option value="Товар 9">Товар 9</option>
                 <option value="Товар 10">Товар 10</option>
+                -->
             </select>
         </div>
 
         <h3>Оцените по шкале от 1 до 5</h3>
+        <!-- Оставлена только 1 характеристика для теста -->
         <div class="char-row"><label>Внешний вид:</label><input type="number" name="char1" min="1" max="5" required></div>
+        <!--
         <div class="char-row"><label>Цвет:</label><input type="number" name="char2" min="1" max="5" required></div>
         <div class="char-row"><label>Аромат:</label><input type="number" name="char3" min="1" max="5" required></div>
         <div class="char-row"><label>Вкус:</label><input type="number" name="char4" min="1" max="5" required></div>
@@ -55,6 +59,7 @@
         <div class="char-row"><label>Интенсивность:</label><input type="number" name="char8" min="1" max="5" required></div>
         <div class="char-row"><label>Общее впечатление:</label><input type="number" name="char9" min="1" max="5" required></div>
         <div class="char-row"><label>Готовность рекомендовать:</label><input type="number" name="char10" min="1" max="5" required></div>
+        -->
 
         <button type="submit">Отправить оценку</button>
     </form>
@@ -75,7 +80,7 @@
             data.timestamp = new Date().toISOString();
 
             try {
-                // ⚠️ ЗАМЕНИТЕ НА ВАШ РЕАЛЬНЫЙ URL (без лишних пробелов)
+                // ⚠️ Убедитесь, что здесь стоит ваш реальный URL (он уже должен быть)
                 const response = await fetch('https://script.google.com/macros/s/AKfycbxZobmhBB-iKpYQyP2X0_KyoE3ZT7tI78ad4IXzJanuWis55-TBopi6duIEHvF4JsQs/exec', {
                     method: 'POST',
                     mode: 'cors',
@@ -97,7 +102,6 @@
             } catch (error) {
                 status.textContent = '❌ Ошибка сети: ' + error.message;
                 status.className = 'error';
-                // Дополнительно выводим в консоль для отладки
                 console.error('Ошибка fetch:', error);
             }
         });
