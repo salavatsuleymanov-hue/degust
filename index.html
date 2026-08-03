@@ -32,34 +32,11 @@
             <select id="product" required>
                 <option value="">Выберите...</option>
                 <option value="Товар 1">Товар 1</option>
-                <!--
-                <option value="Товар 2">Товар 2</option>
-                <option value="Товар 3">Товар 3</option>
-                <option value="Товар 4">Товар 4</option>
-                <option value="Товар 5">Товар 5</option>
-                <option value="Товар 6">Товар 6</option>
-                <option value="Товар 7">Товар 7</option>
-                <option value="Товар 8">Товар 8</option>
-                <option value="Товар 9">Товар 9</option>
-                <option value="Товар 10">Товар 10</option>
-                -->
             </select>
         </div>
 
         <h3>Оцените по шкале от 1 до 5</h3>
-        <!-- Оставлена только 1 характеристика для теста -->
         <div class="char-row"><label>Внешний вид:</label><input type="number" name="char1" min="1" max="5" required></div>
-        <!--
-        <div class="char-row"><label>Цвет:</label><input type="number" name="char2" min="1" max="5" required></div>
-        <div class="char-row"><label>Аромат:</label><input type="number" name="char3" min="1" max="5" required></div>
-        <div class="char-row"><label>Вкус:</label><input type="number" name="char4" min="1" max="5" required></div>
-        <div class="char-row"><label>Текстура / консистенция:</label><input type="number" name="char5" min="1" max="5" required></div>
-        <div class="char-row"><label>Послевкусие:</label><input type="number" name="char6" min="1" max="5" required></div>
-        <div class="char-row"><label>Сбалансированность:</label><input type="number" name="char7" min="1" max="5" required></div>
-        <div class="char-row"><label>Интенсивность:</label><input type="number" name="char8" min="1" max="5" required></div>
-        <div class="char-row"><label>Общее впечатление:</label><input type="number" name="char9" min="1" max="5" required></div>
-        <div class="char-row"><label>Готовность рекомендовать:</label><input type="number" name="char10" min="1" max="5" required></div>
-        -->
 
         <button type="submit">Отправить оценку</button>
     </form>
@@ -79,9 +56,14 @@
             }
             data.timestamp = new Date().toISOString();
 
+            // ВАШ ОРИГИНАЛЬНЫЙ URL (без изменений)
+            //const scriptUrl = 'https://script.google.com/macros/s/AKfycbxZobmhBB-iKpYQyP2X0_KyoE3ZT7tI78ad4IXzJanuWis55-TBopi6duIEHvF4JsQs/exec';
+
+            // ЕСЛИ НЕ РАБОТАЕТ, РАСКОММЕНТИРУЙТЕ СТРОКУ НИЖЕ И ЗАКОММЕНТИРУЙТЕ ВЕРХНЮЮ
+            const scriptUrl = 'https://cors-anywhere.herokuapp.com/' + 'https://script.google.com/macros/s/AKfycbxZobmhBB-iKpYQyP2X0_KyoE3ZT7tI78ad4IXzJanuWis55-TBopi6duIEHvF4JsQs/exec';
+
             try {
-                // ⚠️ Убедитесь, что здесь стоит ваш реальный URL (он уже должен быть)
-                const response = await fetch('https://script.google.com/macros/s/AKfycbxZobmhBB-iKpYQyP2X0_KyoE3ZT7tI78ad4IXzJanuWis55-TBopi6duIEHvF4JsQs/exec', {
+                const response = await fetch(scriptUrl, {
                     method: 'POST',
                     mode: 'cors',
                     headers: {
