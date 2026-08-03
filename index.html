@@ -1,6 +1,3 @@
-Вот исправленный код. Ошибка была в отсутствии кавычек вокруг URL в `fetch`.
-
-```html
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -78,8 +75,8 @@
             data.timestamp = new Date().toISOString();
 
             try {
-                // ⚠️ ВСТАВЬТЕ СЮДА ВАШ URL ИЗ ШАГА 1
-                const response = await fetch('https://script.google.com/macros/s/AKfycbxZobmhBB-iKpYQyP2X0_KyoE3ZT7tI78ad4IXzJanuWis55-TBopi6duIEHvF4JsQs/exec', {
+                // ⚠️ ЗАМЕНИТЕ НА ВАШ РЕАЛЬНЫЙ URL (без лишних пробелов)
+                const response = await fetch('https://script.google.com/macros/s/ВАШ_УНИКАЛЬНЫЙ_КОД/exec', {
                     method: 'POST',
                     mode: 'cors',
                     headers: {
@@ -100,9 +97,10 @@
             } catch (error) {
                 status.textContent = '❌ Ошибка сети: ' + error.message;
                 status.className = 'error';
+                // Дополнительно выводим в консоль для отладки
+                console.error('Ошибка fetch:', error);
             }
         });
     </script>
 </body>
 </html>
-```
