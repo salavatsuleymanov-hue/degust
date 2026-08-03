@@ -21,7 +21,7 @@
     </style>
 </head>
 <body>
-    <h1>Оценка товара (ТЕСТОВАЯ ВЕРСИЯ — 2 товар, 1 свойство)</h1>
+    <h1>Оценка товара (ТЕСТОВАЯ ВЕРСИЯ 3, — 1 товар, 1 свойство)</h1>
     <form id="evaluationForm">
         <div class="form-group">
             <label for="participant">Участник (имя или номер):</label>
@@ -56,11 +56,21 @@
             }
             data.timestamp = new Date().toISOString();
 
-            // ВАШ ОРИГИНАЛЬНЫЙ URL (без изменений)
-            //const scriptUrl = 'https://script.google.com/macros/s/AKfycbxZobmhBB-iKpYQyP2X0_KyoE3ZT7tI78ad4IXzJanuWis55-TBopi6duIEHvF4JsQs/exec';
+            // ---------- ВАШ ОРИГИНАЛЬНЫЙ URL (без изменений) ----------
+            const originalUrl = 'https://script.google.com/macros/s/AKfycbxZobmhBB-iKpYQyP2X0_KyoE3ZT7tI78ad4IXzJanuWis55-TBopi6duIEHvF4JsQs/exec';
 
-            // ЕСЛИ НЕ РАБОТАЕТ, РАСКОММЕНТИРУЙТЕ СТРОКУ НИЖЕ И ЗАКОММЕНТИРУЙТЕ ВЕРХНЮЮ
-            const scriptUrl = 'https://cors-anywhere.herokuapp.com/' + 'https://script.google.com/macros/s/AKfycbxZobmhBB-iKpYQyP2X0_KyoE3ZT7tI78ad4IXzJanuWis55-TBopi6duIEHvF4JsQs/exec';
+            // ---------- ВЫБЕРИТЕ ОДИН ИЗ ТРЁХ ВАРИАНТОВ ----------
+            // Вариант 1: Прямой запрос (если работает без прокси)
+            // const scriptUrl = originalUrl;
+
+            // Вариант 2: Через cors-anywhere (требует авторизации по ссылке /corsdemo)
+            // const scriptUrl = 'https://cors-anywhere.herokuapp.com/' + originalUrl;
+
+            // Вариант 3: Через альтернативный прокси (без авторизации) - РЕКОМЕНДУЮ
+            const scriptUrl = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(originalUrl);
+
+            // Вариант 4: Ещё один бесплатный прокси (если третий не работает)
+            // const scriptUrl = 'https://corsproxy.io/?' + encodeURIComponent(originalUrl);
 
             try {
                 const response = await fetch(scriptUrl, {
